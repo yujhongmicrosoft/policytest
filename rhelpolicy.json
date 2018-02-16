@@ -1,0 +1,38 @@
+{
+    "type": "Microsoft.Authorization/policyDefinitions",
+    "name": "custom-image-from-rg",
+    "properties": {
+        "displayName": "Allow custom VM image from a Resoruce Group",
+        "description": "This policy allows only usage of images from a resource group",
+        "parameters": {
+            "resourceGroupName":{
+                "type":"String",
+                "metadata":{
+                    "displayName": "Resource Group Name"
+                }
+            }
+        },
+ 
+ 
+        "policyRule": {
+           
+          "if": {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Compute/virtualMachines"
+              },
+              {
+
+                  "field": "Microsoft.Compute/virtualMachines/imagePublisher",
+                  "equals" : "RedHat"
+
+              }
+            ]
+          },
+          "then": {
+            "effect": "deny"
+          }
+        }
+    }
+}
