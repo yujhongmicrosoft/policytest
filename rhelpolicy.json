@@ -23,10 +23,12 @@
                 "equals": "Microsoft.Compute/virtualMachines"
               },
               {
-
                   "field": "Microsoft.Compute/virtualMachines/imagePublisher",
                   "equals" : "RedHat"
-
+              },
+              {
+                  "field": "Microsoft.Compute/virtualMachines/imageOffer",
+                  "equals" : "RHEL"
               }
             ]
           },
